@@ -173,7 +173,7 @@ def pause():
 	pausedo = True
 	while pausedo:
 		pygame.mixer.pause()
-		surface.blit(load_image('pause1.jpg'), [0,0])
+		surface.blit(load_image('PAUSA1.jpg'), [0,0])
 		pygame.display.update()
 		for event in pygame.event.get():
 			if event.type == pygame.QUIT:
