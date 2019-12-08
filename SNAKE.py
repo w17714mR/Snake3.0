@@ -36,22 +36,22 @@ def intro():
 	intro = True
 	while intro:
 		surface.blit(load_image('INTRO.jpg'), [0,0])
-		pygame.display.update()		
+		pygame.display.update()
 		for event in pygame.event.get():
 			if event.type == pygame.QUIT:
 				pygame.quit()
-				quit()
+
 			if event.type == pygame.KEYDOWN:
 				if event.key == pygame.K_c:
 					gameLoop()
 					intro = False
 				elif event.key == pygame.K_q:
 					pygame.quit()
-					quit()
+
 				elif event.key == pygame.K_i:
 					select.play(0)
 					documentation()
-					intro = False 
+					intro = False
 
 def points(score, velocidad):
 	text = font.render("PUNTAJE: "+str(score),True,black)
@@ -94,7 +94,7 @@ def gameLoop():
 					sentido = 'LEFT'
 				elif event.key == pygame.K_RIGHT and sentido != 'LEFT':
 					mover_x_cambio = serp_tamano
-					mover_y_cambio = 0		
+					mover_y_cambio = 0
 					sentido = 'RIGHT'
 				elif event.key == pygame.K_UP and sentido != 'DOWN':
 				 	mover_y_cambio = -serp_tamano
@@ -117,8 +117,8 @@ def gameLoop():
 			del listaSerpiente[0]
 		for i in range(len(listaSerpiente)-1):
 			if cabezaSerpiente == listaSerpiente[i]:
-				game_over.play(0)	
-				game_loop_music.stop()	
+				game_over.play(0)
+				game_loop_music.stop()
 				gameOver(largoSerpiente)
 		serpiente(serp_tamano,listaSerpiente)
 		points (largoSerpiente-1, velocidad)
@@ -126,29 +126,29 @@ def gameLoop():
 		pygame.draw.rect(surface, green, [azarManzanaVx, azarManzanaVy, 10, 10])
 		pygame.draw.rect(surface, purple, [azarManzanaLx, azarManzanaLy, 10, 10])
 		pygame.display.update()
-		if mover_x == azarManzanaRx and mover_y == azarManzanaRy:	
+		if mover_x == azarManzanaRx and mover_y == azarManzanaRy:
 			azarManzanaRx = round(random.randrange (50,width-50)/10)*10
 			azarManzanaRy = round(random.randrange (50,height-50)/10)*10
 			largoSerpiente += 1
 			contador += 1
 			if contador%3 == 0:
 				velocidad+=1
-			bite.play(0)	
-		if mover_x == azarManzanaVx and mover_y == azarManzanaVy:	
+			bite.play(0)
+		if mover_x == azarManzanaVx and mover_y == azarManzanaVy:
 			azarManzanaVx = round(random.randrange (50,width-50)/10)*10
-			azarManzanaVy = round(random.randrange (50,height-50)/10)*10	
-			largoSerpiente += 5	
+			azarManzanaVy = round(random.randrange (50,height-50)/10)*10
+			largoSerpiente += 5
 			velocidad +=3
-			bite.play(0)	
-		if mover_x == azarManzanaLx and mover_y == azarManzanaLy:			
+			bite.play(0)
+		if mover_x == azarManzanaLx and mover_y == azarManzanaLy:
 			azarManzanaLx = round(random.randrange (50,width-50)/10)*10
 			azarManzanaLy = round(random.randrange (50,height-50)/10)*10
 			largoSerpiente+=10
 			velocidad +=6
-			bite.play(0)	
-		if mover_x >= width or mover_x <= 1 or mover_y <=45 or mover_y >= height-50: 
-				game_over.play(0)	
-				game_loop_music.stop()	
+			bite.play(0)
+		if mover_x >= width or mover_x <= 1 or mover_y <=45 or mover_y >= height-50:
+				game_over.play(0)
+				game_loop_music.stop()
 				gameOver(largoSerpiente)
 		clock.tick(velocidad)
 
@@ -157,7 +157,7 @@ def gameOver(largoSerpiente):
 	while lost:
 			surface.blit(load_image('PERDISTE.jpg'), [0,0])
 			text = font.render("PUNTAJE: "+str(largoSerpiente-1),True,black)
-			surface.blit(text,[210,250])			
+			surface.blit(text,[210,250])
 			pygame.display.update()
 			for event in pygame.event.get():
 				if event.type == pygame.KEYDOWN:
@@ -166,7 +166,7 @@ def gameOver(largoSerpiente):
 					elif event.key == pygame.K_q:
 						gameOver = False
 						pygame.quit()
-						quit()	
+
 
 def pause():
 	select.play(0)
@@ -179,7 +179,7 @@ def pause():
 		for event in pygame.event.get():
 			if event.type == pygame.QUIT:
 				pygame.quit()
-				quit()
+
 			if event.type == pygame.KEYDOWN:
 				if event.key == pygame.K_c:
 					select.play(0)
@@ -187,7 +187,7 @@ def pause():
 					pausedo = False
 				elif event.key == pygame.K_q:
 					pygame.quit()
-					quit()
+
 
 def documentation():
 	documentation = True
@@ -197,7 +197,7 @@ def documentation():
 		for event in pygame.event.get():
 			if event.type == pygame.QUIT:
 				pygame.quit()
-				quit()
+
 			if event.type == pygame.KEYDOWN:
 				if event.key == pygame.K_v:
 					select.play(0)
@@ -205,6 +205,6 @@ def documentation():
 					documentation = False
 				elif event.key == pygame.K_q:
 					pygame.quit()
-					quit() 
+
 
 intro()
